@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+  Les 7 défauts de la page d'origine et pourquoi c'est un problème :
+  1. Doctype absent : le navigateur ne sait pas quelle version de HTML tu utilises.
+  Il passe donc en « mode quirks » (mode de compatibilité).
+  Il imite alors les vieux navigateurs des années 90, qui interprétaient mal beaucoup de choses. Les marges,
+  les tailles et les alignements peuvent alors s'afficher différemment d'un navigateur à l'autre.
+  2. Attribut lang absent sur <html> : les lecteurs d'écran ne savent pas dans quelle langue prononcer le texte (simple avertissement du validateur, mais vrai impact d'accessibilité).
+  3. <strong> et <p> mal imbriqués (<p>…<strong>…</p></strong>) : les éléments doivent se fermer dans l'ordre inverse de leur ouverture, sinon le DOM construit diffère du code écrit.
+  4. Paragraphe non fermé contenant un <hr> : <hr> n'est pas autorisé dans <p>, le navigateur ferme le paragraphe de force et le </p> suivant devient orphelin.
+  5. id="info" dupliqué : un id doit être unique dans la page, sinon CSS, JavaScript et ancres ciblent le mauvais élément.
+  6. Attribut title sans guillemets (title=horaires du club) : seul « horaires » est la valeur, « du » et « club » deviennent des attributs invalides.
+  7. Paragraphe placé après </html> : contenu hors document, le navigateur le déplace dans le body, ce qui masque l'erreur mais rend le code invalide.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Page à corriger</title>
+  </head>
+  <body>
+    <p>Bienvenue au <strong>club de code.</strong></p>
+    <p>Nos ateliers ont lieu le mercredi de 14 h à 17 h.</p>
+    <hr>
+    <p id="info">Salle B12</p>
+    <p id="niveaux">Ouverts à tous les niveaux</p>
+    <p title="horaires du club">Entrée libre</p>
+    <p>Contact : club@tek-up.tn<br>Tél. : 70 000 000</p>
+    <p>Texte ajouté après la fin du document</p>
+  </body>
+</html>
